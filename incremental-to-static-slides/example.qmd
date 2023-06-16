@@ -1,0 +1,40 @@
+---
+title: "Incremental-to-static-slides Example"
+filters: 
+  - incremental-to-static-slides
+echo: true
+format: beamer  
+---
+
+## Filter Description
+
+This filter removes paragraphs consisting of ". . .", thereby 
+globally removing the incrementation of Quarto presentations that 
+use ". . ." notation.
+
+## Usage
+
+If 
+
+
+> filters: 
+> 
+> &nbsp;&nbsp; -- incremental-to-static-slides
+
+*is not* applied to the Quarto presentation YAML, then this file will
+render as 4 slides: the title slide, the filter description slide, 
+and incremented usage slides
+
+\bigskip
+. . . 
+
+If 
+
+> filters: 
+> 
+> &nbsp;&nbsp; -- incremental-to-static-slides
+
+
+*is* applied to the Quarto presentation YAML, then this file will
+render as 3 slides: title, description, and static usage slide. 
+
