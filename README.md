@@ -49,7 +49,7 @@ Sometimes Quarto doesn't have your desired built-in features. Lua
 filters are the recommended way for users to extend Quarto
 functionality, and pandoc more generally. Pandoc is included in 
 Quarto installations - and Pandoc internally supports Lua - so user
-extensions can be made without downloading and extra software. 
+extensions can be made without downloading any extra software. 
 
 Pandoc works by reading an input file, parsing a markdown file 
 into an "Abstract Syntax Tree" (AST), then writing into the output 
@@ -61,6 +61,7 @@ format. Lua filters change the structure of the AST.
       B -- "Write-out" ---> C(Output);
       D(Lua filters) -.-> B;
 ```
+
 
 ## This repository
 
@@ -106,7 +107,7 @@ quarto create extension filter
 ```
 3. Add Lua code to the `.lua` file using desired text editor. This is the tricky part. Helpful strategies include
    -  Use the `example.qmd` to develop your Lua code. Make changes to that file to test the changes to your Lua code. Render the example to see if your Lua code makes the desired changes.
-   -  Print the Abstract Syntax Tree; knowing what the AST looks like will be key in knowing how to alter its structure to obtain the desired output. This can be done by using Pandoc to convert the `.qmd` file to a `.json` with the shell command then reading the `.json` file into R and printing the AST:
+   -  Print the Abstract Syntax Tree; knowing what the AST looks like will be key in knowing how to alter its structure to obtain the desired output. This can be done by using Pandoc to convert the `.qmd` file to a `.json` with the following shell command, then reading the `.json` file into R and printing the AST:
 
 **Terminal:**
 ```
@@ -120,11 +121,11 @@ xfun:::tree(
 )
 ```
 
-4. Document what the filter in the `README.md` file, then illustrate a use case with an `example.qmd`.  
+4. Document what the filter does in the `README.md` file, then illustrate a use case with an `example.qmd`.  
 5. Push subdirectory to `clroberts-adfg/lua-filters`
 
 
-### Where can I learn more
+### Where can I learn more?
 
 Generally speaking, Pandoc's Lua documentation is much more 
 helpful than Lua's own help files. This is because Pandoc's 
