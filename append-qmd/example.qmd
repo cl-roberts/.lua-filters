@@ -1,0 +1,18 @@
+---
+title: "Append-qmd Example"
+format: revealjs
+filters:
+  - append-qmd
+---
+
+## Slide 1
+
+Some content
+
+## Slide 2
+
+Some more content...
+
+. . .
+
+... and more content
