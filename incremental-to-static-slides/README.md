@@ -13,7 +13,7 @@ Use this lua-filter to delete the ". . ." lines at rendering so you can create a
 Install this extension with the following shell command
 
 ```bash
-quarto add clroberts-adfg/lua-filters/incremental-to-static-slides
+quarto add cl-roberts/lua-filters/incremental-to-static-slides
 ```
 
 This will install the extension under the `_extensions` subdirectory.

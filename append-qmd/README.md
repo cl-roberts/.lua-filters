@@ -11,7 +11,7 @@ time and error prone. If only there was a way to include generic material at ren
 ## Installing
 
 ```bash
-quarto add clroberts-adfg/lua-filters/append-qmd
+quarto add cl-roberts/lua-filters/append-qmd
 ```
 
 This will install the extension under the `_extensions` subdirectory.
