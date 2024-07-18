@@ -1,0 +1,8 @@
+title: Typst-function-to-div
+author: CL Roberts
+version: 1.0.0
+quarto-required: ">=1.4.0"
+contributes:
+  filters:
+    - typst-to-div.lua
+

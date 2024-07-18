@@ -1,0 +1,50 @@
+---
+title: "typst-to-div Example"
+format: typst
+filters:
+  - typst-to-div
+---
+
+
+The standard way to run `.qmd` content through custom typst styling appears to 
+be to wrap said content in typst blocks, e.g.
+
+```{=typst}
+#block(
+    fill:luma(230), 
+    inset:16pt,
+    outset:-8pt, 
+    radius:4pt,
+    [
+```
+
+...quarto content...
+
+```{=typst}
+    ]   
+) 
+```
+
+This lua filter allows users to create typst functions in a `typst-template.typ`
+file (or just the `.qmd`) and call them from a Quarto div:
+
+```{=typst}
+
+#let myblock(text) = block(text,
+    fill:luma(230), 
+    inset:16pt,
+    outset:-8pt, 
+    radius:4pt
+  )
+```
+
+::: {.typst-to-div-myblock}
+...quarto content...
+:::
+
+Note that the div class is named using the user-created typst 
+function name preceded by the project name as determined as the parent directory
+to the `_extensions` folder and an `'-'`. In this example's case, the typst function 
+is `myblock` and the `_extentions` folder lives in a parent directory called 
+`typst-to-div`. Hence, to call the typst function I used a div with class
+`.typst-to-div-myblock`
