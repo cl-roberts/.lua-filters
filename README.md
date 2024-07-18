@@ -116,7 +116,7 @@ pandoc -f markdown -t json -o example.json example.qmd
 
 **R:**
 ```
-xfun:::tree(
+xfun::tree(
   jsonlite::fromJSON('example.json', simplifyVector = FALSE)
 )
 ```
