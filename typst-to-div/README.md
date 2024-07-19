@@ -1,7 +1,8 @@
 # typst-to-div Extension For Quarto
 
 Enables using custom typst functions from a `typst-template.typ` file as a
-div when authoring in Quarto.
+div when authoring in Quarto. This filter is a generalization of 
+[this one](https://github.com/quarto-ext/typst-templates/blob/main/ams/_extensions/ams/ams.lua). 
 
 ## Use case
 
