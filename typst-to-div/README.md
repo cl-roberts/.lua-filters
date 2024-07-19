@@ -28,7 +28,7 @@ be to wrap said content in typst blocks, e.g.
 ````
 
 This lua filter provides syntactic sugar for instead applying typst styling 
-via quarto divs, e.g. the following code typst code above gets placed into a 
+via quarto divs, e.g. the following typst code gets placed into a 
 `typst-template.typ` file:
 
 ```
