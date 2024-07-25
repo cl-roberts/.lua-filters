@@ -49,6 +49,10 @@ then called as a div in the `.qmd`:
 
 ```
 
+Note that the div class is named using the user-created typst 
+function name preceded by the project name (as determined as the parent directory
+to the `_extensions` folder) and an `'-'`.
+
 ## Installing
 
 ```bash
