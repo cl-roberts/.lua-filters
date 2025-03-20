@@ -38,14 +38,9 @@ end
 -- helps pandoc convert quarto divs to typst blocks
 function convertDiv(el)
 
-  quarto.log.output("checking block" .. tostring(el.classes) ..
-    " against " .. typst_block_prefix)
-
   -- if block prefix is found in the classes for the content div, it is
   -- wrapped in a raw typst block using the corresponding style
   if string.match(tostring(el.classes) .. "-", typst_block_prefix) then
-
-    quarto.log.output("FOUND BLOCK")
 
     divName = string.match(
       tostring(el.classes),
@@ -63,14 +58,9 @@ end
 -- helps pandoc convert quarto spans to typst inlines
 function convertInline(el)
 
-  quarto.log.output("checking inline: " .. tostring(el.classes) ..
-    " against " .. typst_inline_prefix)
-
   -- if block prefix is found in the classes for the content div, it is
   -- wrapped in a raw typst block using the corresponding style
   if string.match(tostring(el.classes) .. "-", typst_inline_prefix) then
-
-    quarto.log.output("FOUND INLINE")
 
     inlineName = string.match(
       tostring(el.classes),
