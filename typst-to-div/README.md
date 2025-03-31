@@ -28,7 +28,7 @@ be to wrap said content in typst blocks, e.g.
 ````
 
 This lua filter provides syntactic sugar for instead applying typst styling 
-via quarto divs, e.g. the following typst code gets placed into a 
+via quarto divs and spans, e.g. the following typst code gets placed into a 
 `typst-template.typ` file:
 
 ```
@@ -43,15 +43,20 @@ via quarto divs, e.g. the following typst code gets placed into a
 then called as a div in the `.qmd`:
 
 ```
-::: {.project-myblock}
+::: {tb-myblock}
 ...quarto content...
 :::
-
 ```
 
-Note that the div class is named using the user-created typst 
-function name preceded by the project name (as determined as the parent directory
-to the `_extensions` folder) and an `'-'`.
+There is support for inline styling as well. Simply declare the function 
+
+```
+#let mytext(body) = text(red)[#body]
+```
+
+and call it inline via `[spans]{.ti-mytext}`. Note that the div and span classes 
+are named the user-defined typst function names with prefixes that can be set in 
+the document YAML (separated with a `-`). 
 
 ## Installing
 
@@ -71,6 +76,12 @@ document, include the following lines:
 > filters: 
 > 
 > &nbsp;&nbsp; - typst-to-div
+
+Set the div and span prefixes in the document YAML with 
+
+> typst-block-prefix: tb
+> 
+> typst-inline-prefix: ti
 
 ## Example
 

@@ -3,6 +3,8 @@ title: "typst-to-div Example"
 format: typst
 filters:
   - typst-to-div
+typst-block-prefix: tb
+typst-inline-prefix: ti
 ---
 
 
@@ -36,15 +38,19 @@ file (or just the `.qmd`) and call them from a Quarto div:
     outset:-8pt, 
     radius:4pt
   )
+
+#let mytext(body) = text(red)[#body]
 ```
 
-::: {.typst-to-div-myblock}
+:::{.tb-myblock}
 ...quarto content...
 :::
 
-Note that the div class is named using the user-created typst 
-function name preceded by the project name as determined as the parent directory
-to the `_extensions` folder and an `'-'`. In this example's case, the typst function 
-is `myblock` and the `_extentions` folder lives in a parent directory called 
-`typst-to-div`. Hence, to call the typst function I used a div with class
-`.typst-to-div-myblock`
+There is also support for inline styling. Simply declare a function and call it 
+inline via [spans]{.ti-mytext}.
+
+Note that the div and span classes are identified by a user-defined prefix set in 
+the document YAML. In this example, div classes are identified with a `tb-` 
+prefix and span classes are identified with a `ti-` prefix. Hence, to call the typst 
+block function `myblock` I used a div with class `.tb-myblock`, and to call the
+the typst function `mytext` for inline styling I used the span class `.ti-mytext`. 
