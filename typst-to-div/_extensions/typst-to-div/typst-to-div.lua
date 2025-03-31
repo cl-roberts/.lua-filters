@@ -19,28 +19,32 @@ local function endTypstBlock(blocks)
   end
 end
 
--- detects project name as the parent directory to _extensions
-local function getProjectName(path)
-
-  pattern1 = ".*//(.*)//_extensions//"
-  pattern2 = ".*\\(.*)\\_extensions\\"
-
-  if (string.match(path, pattern1) == nil) then
-    return string.match(path, pattern2)
+-- gets options for preferred prefixes from the document meta, or falls back
+-- if not specified
+function readMeta(m)
+  if m["typst-block-prefix"] ~= nil then
+    typst_block_prefix = pandoc.utils.stringify(m["typst-block-prefix"])
   else
-    return string.match(path, pattern1)
+    typst_block_prefix = "typst-block"
   end
 
+  if m["typst-inline-prefix"] ~= nil then
+    typst_inline_prefix = pandoc.utils.stringify(m["typst-inline-prefix"])
+  else
+    typst_inline_prefix = "typst-inline"
+  end
 end
 
 -- helps pandoc convert quarto divs to typst blocks
-function Div(el)
+function convertDiv(el)
 
-  project = string.gsub(getProjectName(PANDOC_SCRIPT_FILE), "%-", "%%-")
+  -- if block prefix is found in the classes for the content div, it is
+  -- wrapped in a raw typst block using the corresponding style
+  if string.match(tostring(el.classes) .. "-", typst_block_prefix) then
 
-  if string.match(tostring(el.classes), project) then
-
-    divName = string.match(tostring(el.classes), project .. "%-(.*)%}")
+    divName = string.match(
+      tostring(el.classes),
+      typst_block_prefix .. "%-(.*)%}")
     local blocks = pandoc.List({
       pandoc.RawBlock('typst', '#' .. divName .. '[')
     })
@@ -51,3 +55,34 @@ function Div(el)
 
 end
 
+-- helps pandoc convert quarto spans to typst inlines
+function convertInline(el)
+
+  -- if block prefix is found in the classes for the content div, it is
+  -- wrapped in a raw typst block using the corresponding style
+  if string.match(tostring(el.classes) .. "-", typst_inline_prefix) then
+
+    inlineName = string.match(
+      tostring(el.classes),
+      typst_inline_prefix .. "%-(.*)%}")
+    local inlines = pandoc.List({
+      pandoc.RawInline('typst', '#' .. inlineName .. '[')
+    })
+
+    el.content:insert(pandoc.RawInline('typst', ']'))
+    inlines:extend(el.content)
+    return inlines
+
+  end
+
+end
+
+return {
+  {
+    Meta = readMeta
+  },
+  {
+    Div = convertDiv,
+    Span = convertInline
+  }
+}
