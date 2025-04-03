@@ -1,0 +1,26 @@
+---
+title: "Code-appendix Example"
+format: pdf
+filters:
+  - code-appendix
+---
+
+This filter moves the source code generating the following text
+
+```{r}
+to_end <- "move source code to an appendix please, thx"
+
+to_end
+```
+
+as well as this plot
+
+```{r}
+plot(mtcars[,c("mpg", "cyl")])
+```
+
+
+to an appendix at the end of the document, (but keeps the output in its usual place).
+Force a page break in the `.qmd` to display appendix on separate page.
+
+{{< pagebreak >}}
