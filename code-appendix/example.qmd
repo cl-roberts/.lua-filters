@@ -5,6 +5,7 @@ filters:
   - code-appendix
 code-appendix-title: "Source Code:"
 code-appendix-header-level: 2
+code-appendix-write: false
 ---
 
 This filter moves the source code generating the following text
@@ -25,6 +26,7 @@ plot(mtcars[,c("mpg", "cyl")])
 to an appendix at the end of the document, (but keeps the output in its usual place).
 Force a page break in the `.qmd` to display appendix on separate page. Note that 
 you can change the appendix header using the `code-appendix-title` and 
-`code-appendix-header-level` options in the document YAML.
+`code-appendix-header-level` options in the document YAML. Set 
+`code-appendix-write: true` to print source code to a `txt` file.
 
 {{< pagebreak >}}
