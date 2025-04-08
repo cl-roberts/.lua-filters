@@ -1,11 +1,12 @@
 ---
 title: "Code-appendix Example"
-format: typst
+format: pdf
 filters:
   - code-appendix
 code-appendix-title: "Source Code:"
 code-appendix-header-level: 2
-code-appendix-write: false
+code-appendix-file: code-appendix.r
+code-appendix-write: true
 ---
 
 This filter moves the source code generating the following text
@@ -16,17 +17,25 @@ to_end <- "move source code to an appendix please, thx"
 to_end
 ```
 
-as well as this plot
+as well as this table
 
 ```{r}
-plot(mtcars[,c("mpg", "cyl")])
+knitr::kable(data.frame(X = 1:3, Y = letters[1:3]))
 ```
 
 
 to an appendix at the end of the document, (but keeps the output in its usual place).
 Force a page break in the `.qmd` to display appendix on separate page. Note that 
 you can change the appendix header using the `code-appendix-title` and 
-`code-appendix-header-level` options in the document YAML. Set 
-`code-appendix-write: true` to print source code to a `txt` file.
+`code-appendix-header-level` options in the document YAML. 
+
+To write the source code to a file, set `code-appendix-file:` to a string pointing to
+the file you would like to write to. Include file paths (relative to `.qmd`) and
+file extensions (defaults to `.md`). In this example, `code-appendix-file: code-appendix.r`
+tells the filter to write the source code generating the above text and table
+to an executable `.r` file. The automatic creation of the appendix can be turned
+off with `code-appendix-write: false` if you would like to just write the source 
+to a file.
 
 {{< pagebreak >}}
+
