@@ -11,7 +11,7 @@ time and error prone. If only there was a way to include generic material at ren
 ## Installing
 
 ```bash
-quarto add cl-roberts/lua-filters/append-qmd
+quarto add cl-roberts/.lua-filters/append-qmd
 ```
 
 This will install the extension under the `_extensions` subdirectory.
@@ -24,9 +24,10 @@ Quarto document. Then place those files in the same directory as the `append-qmd
 `_extensions/append-qmd`). Then include the following lines into the YAML of your Quarto document. 
 Commenting/uncommenting those lines will toggle inclusion of the appendices.
 
-> filters: 
-> 
-> &nbsp;&nbsp; - append-qmd
+```
+filters:  
+    - append-qmd
+```
 
 Note that this filter is greedy in the sense that it will include any `.qmd` file in the above directory.
 To customize behavior, it will be necessary to make copies of the directory, include different appendix

@@ -61,10 +61,10 @@ the document YAML (separated with a `-`).
 ## Installing
 
 ```bash
-quarto add cl-roberts/lua-filters/typst-to-div
+quarto add cl-roberts/.lua-filters/typst-to-div
 ```
 
-This will install the extension under the _extensions subdirectory. If you're
+This will install the extension under the `_extensions` subdirectory. If you're
 using version control, you will want to check in this directory.
 
 ## Using
@@ -73,15 +73,17 @@ Basic usage requires writing `.qmd` files which contain content that you would
 like to render as pdf using `format: typst`. In the YAML of your Quarto 
 document, include the following lines:
 
-> filters: 
-> 
-> &nbsp;&nbsp; - typst-to-div
+```
+filters:  
+    - typst-to-div
+```
 
 Set the div and span prefixes in the document YAML with 
 
-> typst-block-prefix: tb
-> 
-> typst-inline-prefix: ti
+```
+typst-block-prefix: tb
+typst-inline-prefix: ti
+```
 
 ## Example
 
